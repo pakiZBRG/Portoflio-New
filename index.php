@@ -1,9 +1,33 @@
-<?php 
-    require "sendEmail.php";
+<?php
+   require "vendor/autoload.php";
 
-    if(isset($_POST['submit'])){
-        SendEmail::SendMail($_POST['email'], $_POST['message']);
-    }
+   class SendEmail{
+
+      public static function SendMail($to, $content){
+         $key = "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";
+
+         $email = new \SendGrid\Mail\Mail();
+         $email->setFrom($to, "Paki");
+         $email->setSubject("You got mail");
+         $email->addTo("nasa.nase72@gmail.com");
+         $email->addContent("text/plain", $content);
+
+         $sendgrid = new \SendGrid($key);
+
+         try{
+               $response = $sendgrid->send($email);
+               return $response;
+         }
+         catch (Exception $e){
+               echo "Error: ".$e->getMessage();
+               return false;
+         }
+      }
+   }
+
+   if(isset($_POST['submit'])){
+      SendEmail::SendMail($_POST['email'], $_POST['message']);
+   }
 ?>
 
 <!DOCTYPE html>
@@ -380,7 +404,7 @@
                   <i class='fa fa-file fa-lg' style='color: coral'></i> 
                   <a href='RESUME.pdf' download>Resume</a>
                </p>
-               <form style='width: 75%' action="index.php" methd="POST"> 
+               <form style='width: 75%' action="" methd="POST"> 
                   <input type="email" name="email" id="email" class="form-control" placeholder="Enter email" required>
                   <textarea name="message" id="message" rows="5" class="form-control" placeholder="Write Your Message" required></textarea>
                   <input type="submit" name="submit" value="Send" class="btn btn-danger btn-block" id="sendBtn">
