@@ -36,11 +36,14 @@
     &__name{
         text-align: center;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         letter-spacing: 10px;
         font-family: 'Alien' !important;
+        @media(max-width: 576px){
+            top: 30%;
+        }
     }
   
     &__flex {
