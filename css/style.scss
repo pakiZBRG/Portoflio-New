@@ -1,0 +1,25 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Aesthetics' !important;
+   overflow-x: hidden;
+}
+
+
+textarea:focus{outline: none;}
+input:focus{outline: none;}
+button:focus{outline: none}
+hr{margin: 0 !important;}
+
+@import './components/font';
+@import './components/scrollbar';
+@import './components/glitch';
+@import './components/loader';
+@import './components/section-0';
+@import './components/section-1';
+@import './components/section-2';
+@import './components/section-3';
