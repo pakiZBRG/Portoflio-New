@@ -1,5 +1,5 @@
 <?php 
-    require "php/sendEmail.php";
+    require "sendEmail.php";
 
     if(isset($_POST['submit'])){
         SendEmail::SendMail($_POST['email'], $_POST['message']);
